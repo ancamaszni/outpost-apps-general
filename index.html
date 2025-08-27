@@ -185,7 +185,7 @@ h1{font-size:clamp(44px,7vw,84px);font-weight:900;line-height:1.06;letter-spacin
 }
 
 /* ===== Calculator ===== */
-/* ===== Calculator - COMPLETE CONSISTENT STYLING ===== */
+/* ===== Calculator - FIXED ALIGNMENT AND SPACING ===== */
 .calculator-container{
   display:grid;grid-template-columns:minmax(420px,1fr) minmax(520px,1.2fr);gap:44px;
   background:linear-gradient(135deg, #1A1A1A 0%, #151515 100%);
@@ -201,67 +201,82 @@ h1{font-size:clamp(44px,7vw,84px);font-weight:900;line-height:1.06;letter-spacin
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* 1. MAIN TITLES - Same size and style */
+/* Main titles - consistent sizing */
 .inputs-title,
 .calculator-results h3 {
   font-size: 24px;
   font-weight: 900;
   line-height: 1.3;
   color: var(--fg);
-  margin: 0 0 16px 0;
+  margin: 0 0 20px 0; /* Increased bottom margin for breathing room */
   text-transform: none;
   letter-spacing: 0;
 }
 
-/* 2. ALL LABELS/HEADERS - Same size and style */
-.input-label,
-.result-label,
-.highlight-box-red .result-label,
-.highlight-box-green .result-label {
-  font-size: 18px;
-  font-weight: 600;
-  color: #E8EAEE;
-  margin-bottom: 12px;
-  text-transform: none;
-  letter-spacing: 0;
-  line-height: 1.4;
+/* Calculator results container with proper spacing */
+.calculator-results {
+  background: #1A1A1A;
+  border-radius: 12px;
+  padding: 36px 32px; /* Increased padding for more breathing room */
+  border: 1px solid #333;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.02);
 }
 
-/* 3. ALL NUMBERS AND PERCENTAGES - Same size and style */
-.range-value,
-.result-value,
-.highlight-box-red .result-value,
-.highlight-box-green .result-value {
-  font-size: 20px;
-  font-weight: 900;
-  color: #FFFFFF;
-  white-space: nowrap;
-  letter-spacing: 0;
-  font-variant-numeric: tabular-nums;
-  line-height: 1.2;
-}
-
-/* 4. CONSISTENT SPACING FOR ALL ELEMENTS */
 .calculator-subtitle {
   font-size: 16px;
   color: var(--fg-3);
-  margin-bottom: 24px;
+  margin-bottom: 28px; /* More space below subtitle */
   letter-spacing: 0;
   text-transform: none;
   font-style: italic;
   line-height: 1.4;
 }
 
-.calculator-results {
-  background: #1A1A1A;
-  border-radius: 12px;
-  padding: 32px 28px;
-  border: 1px solid #333;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,.02);
+/* Input labels and result labels - consistent */
+.input-label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 16px; /* More space below labels */
+  font-size: 16px; /* Slightly smaller for better hierarchy */
+  letter-spacing: 0;
+  text-transform: none;
+  color: #C9D2DC;
+  line-height: 1.4;
 }
 
+.result-label,
+.highlight-box-red .result-label,
+.highlight-box-green .result-label {
+  font-size: 16px; /* Consistent with input labels */
+  font-weight: 600;
+  color: #E8EAEE;
+  line-height: 1.4;
+  flex: 1; /* Allow labels to take available space */
+  padding-right: 16px; /* Space between label and value */
+}
+
+/* All values - consistent sizing and alignment */
+.range-value,
+.result-value,
+.highlight-box-red .result-value,
+.highlight-box-green .result-value {
+  font-size: 18px; /* Slightly smaller for better fit */
+  font-weight: 900;
+  color: #FFFFFF;
+  white-space: nowrap;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+  text-align: right; /* Ensure right alignment */
+}
+
+.range-value {
+  margin-top: 12px; /* More space above range values */
+}
+
+/* Input groups with proper spacing */
 .input-group {
-  margin-bottom: 32px;
+  margin-bottom: 36px; /* More space between input groups */
 }
 
 .input-wrapper {
@@ -270,32 +285,27 @@ h1{font-size:clamp(44px,7vw,84px);font-weight:900;line-height:1.06;letter-spacin
   gap: 12px;
 }
 
-.range-value {
-  text-align: right;
-  margin-top: 8px;
-}
-
-/* ALL RESULT ITEMS - Consistent spacing */
+/* Result items with proper spacing and alignment */
 .result-item {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 20px 0;
+  align-items: flex-start; /* Align to top for better text alignment */
+  padding: 24px 0; /* Increased padding for more breathing room */
   border-bottom: 1px solid var(--line);
+  min-height: 60px; /* Ensure consistent height */
 }
 
 .result-item:last-of-type {
   border-bottom: none;
 }
 
-/* HIGHLIGHT BOXES - Consistent with other elements */
+/* Highlight boxes with proper spacing and alignment */
 .highlight-box-red, 
 .highlight-box-green {
   display: block;
   width: 100%;
-  margin-top: 24px;
-  margin-bottom: 0;
-  padding: 20px 28px;
+  margin: 28px 0; /* Increased margins */
+  padding: 28px 32px; /* Increased padding to match results container */
   border-radius: 12px;
   border: 2px solid;
   box-sizing: border-box;
@@ -311,17 +321,25 @@ h1{font-size:clamp(44px,7vw,84px);font-weight:900;line-height:1.06;letter-spacin
   border-color: rgba(0,255,132,.25);
 }
 
-/* Remove extra padding from highlight box items */
+/* Remove conflicting padding from highlight box result items */
 .highlight-box-red .result-item,
 .highlight-box-green .result-item {
-  padding: 0;
+  padding: 0; /* Remove padding since it's handled by the box */
   border-bottom: none;
   margin: 0;
+  min-height: auto; /* Remove min-height constraint */
+  align-items: center; /* Center align within highlight boxes */
+}
+
+/* Ensure highlight box labels have proper emphasis */
+.highlight-box-red .result-label,
+.highlight-box-green .result-label {
+  font-weight: 700; /* Slightly bolder for emphasis */
 }
 
 /* Button and bottom elements */
 .calc-cta-bottom {
-  margin-top: 32px;
+  margin-top: 36px; /* More space above button */
   text-align: center;
 }
 
@@ -339,7 +357,7 @@ h1{font-size:clamp(44px,7vw,84px);font-weight:900;line-height:1.06;letter-spacin
   line-height: 1.4;
 }
 
-/* Sliders */
+/* Sliders with better visibility */
 .range-input{
   -webkit-appearance: none;
   appearance: none;
