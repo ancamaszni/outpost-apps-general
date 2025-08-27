@@ -85,18 +85,23 @@ h1{font-size:clamp(44px,7vw,84px);font-weight:900;line-height:1.06;letter-spacin
   line-height: 1.7;
 }
 
-.solid-green-text{color:var(--accent);font-weight:900;text-transform:uppercase;letter-spacing:.06em}
-
+.solid-green-text {
+  color: var(--accent);
+  font-weight: 900;
+  text-transform: none; /* Changed from uppercase */
+  letter-spacing: 0; /* Changed from .06em */
+}
+  
 /* ===== Buttons ===== */
 .btn {
   display: inline-block;
   padding: 16px 24px; /* Increased from 13px 20px */
   border-radius: 999px;
-  font-weight: 900;
+  font-weight: 700;
   font-size: 14px; /* Increased from 13px */
   line-height: 1;
-  letter-spacing: .06em; /* Reduced from .08em */
-  text-transform: uppercase;
+  letter-spacing: 0; /* Reduced from .08em */
+  text-transform: none;
   border: 1px solid transparent;
   cursor: pointer;
   transition: transform .15s, background .2s, border-color .2s, box-shadow .2s;
