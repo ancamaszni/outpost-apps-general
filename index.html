@@ -192,10 +192,7 @@
   <nav id="navbar">
     <div class="container">
       <div class="nav-container">
-        <a href="#" class="logo">
-          <span class="logo-square"></span>
-          <span><span class="company">App stores</span> x Outpost</span>
-        </a>
+       <a href="#" class="logo" id="gmv-logo"></a>
         <div class="nav-links">
           <a href="#problem">Problem</a>
           <a href="#outpost-one">Solution</a>
@@ -657,6 +654,14 @@
 
     updateGlobals(net, net/gmv);
     setTxt("gmv_display", currency0(gmv));
+
+    setTxt("cta", `UNLOCK ${fmtShort(net)} — BOOK A DEMO`);
+
+      updateGlobals(net, net/gmv);
+      setTxt("gmv_display", currency0(gmv));
+      
+      // NEW: update the nav GMV display live
+      setNavGmv(gmv);
   }
 
   // ---- External action (Calendly) ---------------------------
@@ -665,8 +670,10 @@
   // ---- Init -------------------------------------------------
   window.addEventListener("load", ()=>{
     // 1) Company name in all spots
-    document.querySelectorAll(".company").forEach(el => el.textContent = CONFIG.company);
-
+      function fmtMillions(n){
+        return "$" + (n/1e6).toFixed(0) + "M";
+      }
+      document.getElementById("gmv-logo").textContent = fmtMillions(CONFIG.gmvStart);
     // 2) Navbar shrink on scroll
     document.addEventListener("scroll", ()=>{
       const n=document.getElementById("navbar");
