@@ -108,16 +108,102 @@ h1{font-size:clamp(44px,7vw,84px);font-weight:900;line-height:1.06;letter-spacin
 .input-label{display:block;font-weight:900;margin-bottom:8px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-2)}
 .range-value{font-size:18px;font-weight:900;color:#D7E3F3;text-align:right}
 
-.calculator-results{background:#121212;border-radius:12px;padding:22px;border:1px solid #232323;box-shadow:inset 0 0 0 1px rgba(255,255,255,.02)}
-.calculator-results h3{font-size:16px;font-weight:900;margin-bottom:6px;letter-spacing:.08em;text-transform:uppercase}
-.calculator-subtitle{font-size:12px;color:var(--fg-3);margin-bottom:12px;letter-spacing:.08em;text-transform:uppercase}
-.result-item{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
-.result-item:last-of-type{border-bottom:none}
-.result-label{font-size:14px;font-weight:800;color:#DDE3EA}
-.result-value{font-size:18px;font-weight:900;white-space:nowrap;letter-spacing:.01em;font-variant-numeric:tabular-nums}
-.highlight-box-red,.highlight-box-green{display:block;width:100%;margin-top:12px;padding:14px;border-radius:12px}
-.highlight-box-red{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.35)}
-.highlight-box-green{background:rgba(0,255,132,.08);border:1px solid rgba(0,255,132,.35)}
+.calculator-results {
+  background: #121212;
+  border-radius: 12px;
+  padding: 28px 24px; /* Increased padding */
+  border: 1px solid #232323;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.02);
+}
+
+.calculator-results h3 {
+  font-size: 18px; /* Slightly larger */
+  font-weight: 900;
+  margin-bottom: 4px; /* Reduced margin */
+  letter-spacing: .05em; /* Reduced letter spacing */
+  text-transform: uppercase;
+}
+
+.calculator-subtitle {
+  font-size: 14px; /* Increased from 12px */
+  color: var(--fg-3);
+  margin-bottom: 24px; /* Increased margin */
+  letter-spacing: .05em;
+  text-transform: none; /* Remove uppercase */
+  font-style: italic; /* Make it italic like in Roblox version */
+}
+
+.result-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0; /* Increased padding */
+  border-bottom: 1px solid var(--line);
+}
+
+.result-item:last-of-type {
+  border-bottom: none;
+}
+
+.result-label {
+  font-size: 16px; /* Increased from 14px */
+  font-weight: 600; /* Reduced from 800 */
+  color: #E8EAEE; /* Lighter color */
+}
+
+.result-value {
+  font-size: 18px;
+  font-weight: 900;
+  white-space: nowrap;
+  letter-spacing: .01em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Highlight boxes - cleaner styling */
+.highlight-box-red, .highlight-box-green {
+  display: block;
+  width: 100%;
+  margin-top: 20px; /* Increased margin */
+  padding: 18px 20px; /* Adjusted padding */
+  border-radius: 12px;
+  border: 2px solid; /* Thicker border */
+}
+
+.highlight-box-red {
+  background: rgba(239,68,68,.06); /* Reduced opacity */
+  border-color: rgba(239,68,68,.25); /* Reduced border opacity */
+}
+
+.highlight-box-green {
+  background: rgba(0,255,132,.06); /* Reduced opacity */
+  border-color: rgba(0,255,132,.25); /* Reduced border opacity */
+}
+
+/* Special styling for highlight box result items */
+.highlight-box-red .result-item,
+.highlight-box-green .result-item {
+  padding: 0; /* Remove padding since it's in the box */
+  border-bottom: none;
+  margin: 0;
+}
+
+.highlight-box-red .result-label,
+.highlight-box-green .result-label {
+  font-weight: 700; /* Slightly bolder for highlight boxes */
+}
+
+/* CTA button in calculator */
+.calc-cta-bottom {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.calc-note {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--fg-3);
+  font-style: italic;
+}
 
 /* Sliders */
 .range-input{-webkit-appearance:none;appearance:none;width:100%;height:10px;border-radius:6px;background:#151515;border:1px solid #272727;outline:none}
@@ -441,8 +527,9 @@ td{padding:18px 24px;color:var(--fg)}
 
             <div class="calc-cta-bottom">
               <button class="btn btn-cta-large" id="cta" onclick="openModal()">UNLOCK $1.4M — BOOK A DEMO</button>
-              <div class="calc-note">*Net value is inclusive of Outpost’s flat fee.</div>
+              <div class="calc-note">*Net value is inclusive of Outpost's flat fee.</div>
             </div>
+
           </div>
         </div>
 
