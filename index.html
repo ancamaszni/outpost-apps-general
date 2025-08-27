@@ -279,10 +279,11 @@ result-label {
 .highlight-box-red, .highlight-box-green {
   display: block;
   width: 100%;
-  margin-top: 20px; /* CHANGED: from 20px to 24px */
-  padding: 18px 20px; /* CHANGED: from 18px 20px to 24px 28px */
+  margin: 24px 0; /* CHANGED: centered margins */
+  padding: 24px 28px;
   border-radius: 12px;
   border: 2px solid;
+  box-sizing: border-box; /* Ensure consistent width calculation */
 }
 
 .highlight-box-red {
@@ -293,15 +294,21 @@ result-label {
   background: rgba(0,255,132,.06);
   border-color: rgba(0,255,132,.25);
 }
-.highlight-box-red .result-item,
-.highlight-box-green .result-item {
-  padding: 0;
-  border-bottom: none;
-  margin: 0;
-}
+  
+/* Reduce text size in highlight boxes to fit better */
 .highlight-box-red .result-label,
 .highlight-box-green .result-label {
+  font-size: 16px; /* CHANGED: from 18px to 16px */
   font-weight: 700;
+}
+
+.highlight-box-red .result-value,
+.highlight-box-green .result-value {
+  font-size: 18px; /* CHANGED: from 20px to 18px */
+  font-weight: 900;
+  white-space: nowrap;
+  letter-spacing: .01em;
+  font-variant-numeric: tabular-nums;
 }
   
 .calc-cta-bottom .btn {
