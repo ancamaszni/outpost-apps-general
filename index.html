@@ -185,12 +185,14 @@ h1{font-size:clamp(44px,7vw,84px);font-weight:900;line-height:1.06;letter-spacin
 }
 
 /* ===== Calculator ===== */
+/* ===== Calculator - FIXED ALIGNMENT AND SPACING ===== */
 .calculator-container{
   display:grid;grid-template-columns:minmax(420px,1fr) minmax(520px,1.2fr);gap:44px;
   background:linear-gradient(135deg, #1A1A1A 0%, #151515 100%);
   border:1px solid rgba(var(--accent-rgb), 0.25); border-radius:var(--r-lg); padding:40px;
   align-items:start; box-shadow:0 18px 42px rgba(0,0,0,.42);
 }
+
 .left-panel{
   position:sticky;top:100px;
   background: rgba(255, 255, 255, 0.02);
@@ -198,61 +200,253 @@ h1{font-size:clamp(44px,7vw,84px);font-weight:900;line-height:1.06;letter-spacin
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
+
+/* Main titles - consistent sizing */
 .inputs-title,
 .calculator-results h3 {
   font-size: 24px;
   font-weight: 900;
   line-height: 1.3;
   color: var(--fg);
-  margin: 0 0 20px 0;
+  margin: 0 0 20px 0; /* Increased bottom margin for breathing room */
   text-transform: none;
   letter-spacing: 0;
 }
+
+/* Calculator results container with proper spacing */
 .calculator-results {
   background: #1A1A1A;
   border-radius: 12px;
-  padding: 36px 32px;
+  padding: 36px 32px; /* Increased padding for more breathing room */
   border: 1px solid #333;
   box-shadow: inset 0 0 0 1px rgba(255,255,255,.02);
 }
-.calculator-subtitle { font-size: 16px; color: var(--fg-3); margin-bottom: 28px; letter-spacing: 0; font-style: italic; line-height: 1.4; }
-.input-label { display:block; font-weight:700; margin-bottom:16px; font-size:16px; color:#C9D2DC; line-height:1.4; }
-.result-label { font-size:16px; font-weight:600; color:#E8EAEE; line-height:1.4; flex:1; padding-right:16px; }
-.range-value,.result-value{ font-size:18px; font-weight:900; color:#FFFFFF; white-space:nowrap; letter-spacing:0; font-variant-numeric:tabular-nums; line-height:1.2; text-align:right; }
-.range-value{ margin-top:12px; }
-.input-group{ margin-bottom:24px; }
-.input-wrapper{ display:flex; flex-direction:column; gap:12px; }
-.result-item{ display:flex; justify-content:space-between; align-items:center; padding:18px 0; border-bottom:1px solid var(--line); }
-.result-item:last-of-type{ border-bottom:none; }
-.highlight-box-red,.highlight-box-green{ display:block; width:100%; margin:24px 0; padding:24px 28px; border-radius:12px; border:2px solid; box-sizing:border-box; }
-.highlight-box-red{ background:rgba(239,68,68,.06); border-color:rgba(239,68,68,.25); }
-.highlight-box-green{ background:rgba(0,255,132,.06); border-color:rgba(0,255,132,.25); }
-.highlight-box-red .result-item,.highlight-box-green .result-item{ padding:0; border-bottom:none; margin:0; }
-.calc-cta-bottom{ margin-top:24px; text-align:center; }
-.calc-note{ margin-top:12px; font-size:14px; color:var(--fg-3); font-style:italic; line-height:1.4; }
 
-/* Inputs */
-.range-input{ -webkit-appearance:none; appearance:none; width:100%; height:12px; border-radius:8px; background:#2A2A2A; border:1px solid #404040; outline:none; box-shadow:inset 0 1px 3px rgba(0,0,0,0.3); }
-.range-input::-webkit-slider-thumb{ -webkit-appearance:none; appearance:none; width:22px; height:22px; border-radius:50%; background:var(--accent); border:3px solid #000; margin-top:-7px; cursor:pointer; box-shadow:0 0 12px rgba(var(--accent-rgb), 0.4); }
-.range-input::-moz-range-thumb{ width:22px; height:22px; border-radius:50%; background:var(--accent); border:3px solid #000; cursor:pointer; box-shadow:0 0 12px rgba(var(--accent-rgb), 0.4); }
+.calculator-subtitle {
+  font-size: 16px;
+  color: var(--fg-3);
+  margin-bottom: 28px; /* More space below subtitle */
+  letter-spacing: 0;
+  text-transform: none;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+/* Input labels and result labels - consistent */
+.input-label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 16px; /* More space below labels */
+  font-size: 16px; /* Slightly smaller for better hierarchy */
+  letter-spacing: 0;
+  text-transform: none;
+  color: #C9D2DC;
+  line-height: 1.4;
+}
+
+.result-label,
+.highlight-box-red .result-label,
+.highlight-box-green .result-label {
+  font-size: 16px; /* Consistent with input labels */
+  font-weight: 600;
+  color: #E8EAEE;
+  line-height: 1.4;
+  flex: 1; /* Allow labels to take available space */
+  padding-right: 16px; /* Space between label and value */
+}
+
+/* All values - consistent sizing and alignment */
+.range-value,
+.result-value,
+.highlight-box-red .result-value,
+.highlight-box-green .result-value {
+  font-size: 18px; /* Slightly smaller for better fit */
+  font-weight: 900;
+  color: #FFFFFF;
+  white-space: nowrap;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+  text-align: right; /* Ensure right alignment */
+}
+
+.range-value {
+  margin-top: 12px; /* More space above range values */
+}
+
+/* Input groups with proper spacing */
+.input-group {
+  margin-bottom: 36px; /* More space between input groups */
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Result items with proper spacing and alignment */
+.result-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Align to top for better text alignment */
+  padding: 24px 0; /* Increased padding for more breathing room */
+  border-bottom: 1px solid var(--line);
+  min-height: 60px; /* Ensure consistent height */
+}
+
+.result-item:last-of-type {
+  border-bottom: none;
+}
+
+/* Highlight boxes with proper spacing and alignment */
+.highlight-box-red, 
+.highlight-box-green {
+  display: block;
+  width: 100%;
+  margin: 28px 0; /* Increased margins */
+  padding: 28px 32px; /* Increased padding to match results container */
+  border-radius: 12px;
+  border: 2px solid;
+  box-sizing: border-box;
+}
+
+.highlight-box-red {
+  background: rgba(239,68,68,.06);
+  border-color: rgba(239,68,68,.25);
+}
+
+.highlight-box-green {
+  background: rgba(0,255,132,.06);
+  border-color: rgba(0,255,132,.25);
+}
+
+/* Remove conflicting padding from highlight box result items */
+.highlight-box-red .result-item,
+.highlight-box-green .result-item {
+  padding: 0; /* Remove padding since it's handled by the box */
+  border-bottom: none;
+  margin: 0;
+  min-height: auto; /* Remove min-height constraint */
+  align-items: center; /* Center align within highlight boxes */
+}
+
+/* Ensure highlight box labels have proper emphasis */
+.highlight-box-red .result-label,
+.highlight-box-green .result-label {
+  font-weight: 700; /* Slightly bolder for emphasis */
+}
+
+/* Button and bottom elements */
+.calc-cta-bottom {
+  margin-top: 36px; /* More space above button */
+  text-align: center;
+}
+
+.calc-cta-bottom .btn {
+  font-size: 16px;
+  font-weight: 700;
+  padding: 18px 32px;
+}
+
+.calc-note {
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--fg-3);
+  font-style: italic;
+  line-height: 1.4;
+}
+
+/* Sliders with better visibility */
+.range-input{
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 12px;
+  border-radius: 8px;
+  background: #2A2A2A;
+  border: 1px solid #404040;
+  outline: none;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.range-input::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 3px solid #000;
+  margin-top: -7px;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(var(--accent-rgb), 0.4);
+}
+
+.range-input::-moz-range-thumb{
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 3px solid #000;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(var(--accent-rgb), 0.4);
+}
 
 /* ===== "How we calculate" ===== */
 .calculator-explanation{max-width:var(--w);margin:36px auto 0;padding:22px 26px;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.02)}
-.explanation-title { font-size: 18px; font-weight: 900; margin-bottom: 12px; letter-spacing: 0; }
+.explanation-title {
+  font-size: 18px;
+  font-weight: 900;
+  margin-bottom: 12px;
+  letter-spacing: 0;
+  text-transform: none;
+}
 .calculator-explanation .explanation-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
 .explanation-item h4{font-size:16px;margin-bottom:6px;font-weight:800}
 .explanation-item p{color:var(--fg-2);font-size:16px}
 
 /* ===== Value hero ===== */
-.value-hero { margin: 60px auto; max-width: 1060px; padding: 0; background: none; border: none; border-radius: 0; text-align: center; box-shadow: none; }
-.value-hero-content { font-size: clamp(34px, 4.5vw, 56px); font-weight: 900; line-height: 1.12; letter-spacing: -0.005em; color: var(--fg); }
-.value-highlight { color: var(--accent); font-weight: 900; text-transform: none; letter-spacing: 0; font-size: inherit; margin: 0; display: inline; }
+.value-hero {
+  margin: 60px auto;
+  max-width: 1060px;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+  text-align: center;
+  box-shadow: none;
+}
+.value-hero-content {
+  font-size: clamp(34px, 4.5vw, 56px);
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: -0.005em;
+  color: var(--fg);
+}
+.value-highlight {
+  color: var(--accent);
+  font-weight: 900;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: inherit;
+  margin: 0;
+  display: inline;
+}
 
 /* ===== Comparison table ===== */
 .table-container{background:linear-gradient(135deg,rgba(255,255,255,.02),rgba(255,255,255,.01));border:1px solid rgba(var(--accent-rgb),.18);border-radius:16px;overflow:hidden}
 table{width:100%;border-collapse:collapse}
 thead{border-bottom:1px solid rgba(var(--accent-rgb),.18)}
-th { padding: 24px 28px; text-align: left; font-weight: 900; letter-spacing: 0; font-size: 13px; color: #C9D2DC; }
+th {
+  padding: 24px 28px;
+  text-align: left;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: none;
+  font-size: 13px;
+  color: #C9D2DC;
+}
 tbody tr{background:rgba(255,255,255,.01);border-bottom:1px solid rgba(255,255,255,.06)}
 tbody tr:nth-child(even){background:rgba(255,255,255,.03)}
 td{padding:22px 28px;color:var(--fg);font-size:16px;line-height:1.5;}
@@ -270,6 +464,7 @@ td{padding:22px 28px;color:var(--fg);font-size:16px;line-height:1.5;}
   .calculator-container{grid-template-columns:1fr;gap:32px;padding:32px}
   .left-panel{position:static}
 }
+
 @media (max-width:900px){
   .grid-3{grid-template-columns:1fr}
   .calculator-container{gap:26px;padding:28px}
@@ -294,9 +489,9 @@ td{padding:22px 28px;color:var(--fg);font-size:16px;line-height:1.5;}
       <div class="nav-container">
         <div class="nav-links">
           <a href="#problem">Problem</a>
-          <a href="#solution-access">Solution</a>
+          <a href="#outpost-one">Solution</a>
           <a href="#calculator">Calculator</a>
-          <a href="#" class="btn btn-primary" id="nav-cta" onclick="openModal()">Get paid <span class="nav-dynamic-pct">24%</span></a>
+          <a href="#" class="btn btn-primary" id="nav-cta" onclick="openModal()">Unlock $<span class="nav-dynamic">2.3M</span> with Outpost</a>
         </div>
       </div>
     </div>
@@ -306,12 +501,11 @@ td{padding:22px 28px;color:var(--fg);font-size:16px;line-height:1.5;}
   <section class="hero">
     <div class="container">
       <h1>
-        Get paid <span class="solid-green-text" id="hero-pct">24%</span> to forget about your indirect tax for good.
+        Get <span class="solid-green-text" id="hero-pct">24%</span> more from from your app with Outpost
       </h1>
       <p class="hero-subtitle">
-        <em>*Technically getting paid — this is how much cheaper we are vs. competitors for giving you more; you’re ultimately getting paid the difference.</em>
-        <br/><br/>
-        Outpost partners with <span class="company">leading B2C apps</span> in Europe, APAC and the US to put indirect taxes on autopilot. We handle checkout, calculation, registrations, filings — and we become fully liable for your indirect taxes. Integrate once and forget tax. <!-- per Access brief -->
+        <span>Software companies with <span id="gmv_display">$10M</span> in GMV</span>  are leaving $<span id="hero-value">2.3M</span> on the table every year by paying high fees on tax and payments infrastructure.
+        <br><br><strong>Unlock it with Outpost. </strong>
       </p>
       <div class="hero-buttons">
         <a href="#calculator" class="btn btn-cta-large">Calculate impact →</a>
@@ -319,7 +513,8 @@ td{padding:22px 28px;color:var(--fg);font-size:16px;line-height:1.5;}
       </div>
       <div class="hero-callout">
         <p class="hero-callout-text">
-          <strong>Outpost Access</strong> is a PSP-agnostic, SDK-like API that gives you end-to-end coverage with one transparent fee.
+          <strong>Outpost</strong> partners with global B2C app companies so they can sell <strong>globally</strong> like a local. 
+          Move off the App / Play Store and offload your tax, compliance, payments and legal obligations to Outpost.
         </p>
       </div>
     </div>
@@ -329,141 +524,168 @@ td{padding:22px 28px;color:var(--fg);font-size:16px;line-height:1.5;}
   <section class="section" id="problem">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Global expansion shouldn’t be so difficult</h2>
+        <h2 class="section-title">The hidden cost of global expansion</h2>
         <p class="section-subtitle">
-          Expanding cross-border means complying with local indirect tax in every market, often from the first dollar sold. Tax is a maze — draining time and headcount month after month.
+          Global B2C apps are leaving substantial value on the table each year from App / Play Store fees, costing them potentially 30-40% of GMV per year.
         </p>
       </div>
       <div class="grid-3">
         <div class="card">
           <div class="card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div class="card-value">32% of GMV</div>
+          <div class="card-label">App/Play Store fee</div>
+          <p class="card-description">High App / Play Store commissions erode margins and impose restrictions.</p>
+        </div>
+       
+        <div class="card">
+          <div class="card-icon">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
           </div>
-          <div class="card-value">Complexity & time</div>
-          <div class="card-label">For SMEs / Micro</div>
-          <p class="card-description">Up-front research, ongoing updates, monthly remittances — it all adds up.</p>
+          <div class="card-value">500+ hours</div>
+          <div class="card-label">Time to set up alternatives</div>
+          <p class="card-description">DIY set up for payments, tax compliance, and legal requirements.</p>
         </div>
-        <div class="card">
-          <div class="card-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/></svg>
-          </div>
-          <div class="card-value">Costs escalate fast</div>
-          <div class="card-label">Accountants, FTEs, platform fees</div>
-          <p class="card-description">DIY and platforms layer on fees with little visibility or control.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.5 3.5L7 15l4 4L22 7.5"/></svg>
-          </div>
-          <div class="card-value">Limited coverage</div>
-          <div class="card-label">Lingering liability</div>
-          <p class="card-description">Most solutions aren’t end-to-end. If something’s missed, you’re liable later.</p>
-        </div>
-      </div>
 
-      <div class="grid-3" style="margin-top:32px">
-        <div class="card">
+         <div class="card">
           <div class="card-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/></svg>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18.5 3.5L7 15l4 4L22 7.5"/></svg>
           </div>
-          <div class="card-value">Scale complexity</div>
-          <div class="card-label">For enterprises</div>
-          <p class="card-description">Global businesses struggle to get true end-to-end coverage.</p>
+          <div class="card-value">Shared entities</div>
+          <div class="card-label">Limited alternatives</div>
+          <p class="card-description">Shared entity models mean other MoRs have limitations on who they can work with.</p>
         </div>
-        <div class="card">
-          <div class="card-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/></svg>
-          </div>
-          <div class="card-value">Costs escalate fast</div>
-          <div class="card-label">Fragmented tooling</div>
-          <p class="card-description">Complex fee structures with hidden costs; hard to plan confidently.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10H7z"/></svg>
-          </div>
-          <div class="card-value">Incorrect filings</div>
-          <div class="card-label">Future risk</div>
-          <p class="card-description">Missteps create major costs later, forcing in-house compliance.</p>
-        </div>
+        
       </div>
     </div>
   </section>
 
-  <!-- SOLUTION: OUTPOST ACCESS -->
-<section class="section" id="solution-access">
+  <!-- SOLUTION: OUTPOST ONE -->
+<section class="section" id="outpost-one">
   <div class="container">
     <div class="section-header">
       <h2 class="section-title">
-        The solution: <span class="solid-green-text">Outpost Access</span>
+        The solution: <span class="solid-green-text">Outpost One</span>
       </h2>
       <p class="section-subtitle">
-        End-to-end, PSP-agnostic indirect tax — with one SDK-like API, full liability coverage, and one transparent fee.
+        An enterprise-grade, dedicated Merchant of Record that helps you move off Stores and
+        sell <strong>globally, like a local </strong> — without the massive cost or the overhead.
       </p>
     </div>
 
     <div class="grid-3">
+      <!-- Dedicated Entity -->
       <div class="card">
         <div class="card-icon">
+          <!-- shield / building -->
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 3l7 4v5a9 9 0 0 1-7 8 9 9 0 0 1-7-8V7l7-4z"/>
+          </svg>
+        </div>
+        <div class="card-value">Dedicated entity</div>
+        <div class="card-label">Isolated risk & control</div>
+        <p class="card-description">Your Outpost legal entity — your risk. End enterprise level governance and flexibility for us to support your business model.</p>
+      </div>
+
+      <!-- Payments & Routing -->
+      <div class="card">
+        <div class="card-icon">
+          <!-- globe / route -->
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+        </div>
+        <div class="card-value">Local payments</div>
+        <div class="card-label">We won't cost you approval rates</div>
+        <p class="card-description">High approval rates with tailored MCC, optimised PSP costs and access to local APM.</p>
+      </div>
+
+      <!-- Tax & Compliance -->
+      <div class="card">
+        <div class="card-icon">
+          <!-- check shield -->
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M12 3l7 4v5a9 9 0 0 1-7 8 9 9 0 0 1-7-8V7l7-4z"/>
             <path d="M9 12l2 2 4-4"/>
           </svg>
         </div>
-        <div class="card-value">End-to-end coverage</div>
-        <div class="card-label">Tax on autopilot</div>
-        <p class="card-description">We track where you sell, calculate and remit, file for you — and if we get it wrong, we’re liable.</p>
+        <div class="card-value">Tax and compliance</div>
+        <div class="card-label">Done-for-you</div>
+        <p class="card-description">MoR responsibilities, indirect taxes, e-invoicing, filing, legal structuring — handled.</p>
       </div>
 
+      <!-- Payouts & FX -->
       <div class="card">
         <div class="card-icon">
+          <!-- bank / cash -->
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/>
+            <path d="M2 9l10-5 10 5v6a8 8 0 0 1-10 7A8 8 0 0 1 2 15V9z"/>
+            <path d="M12 12v6M8 14h8"/>
           </svg>
         </div>
-        <div class="card-value">Full flexibility</div>
-        <div class="card-label">PSP-agnostic</div>
-        <p class="card-description">Use different PSPs in different markets. Simple integration and fast time-to-market.</p>
+        <div class="card-value">Payouts & FX</div>
+        <div class="card-label">Clean economics</div>
+        <p class="card-description">Transparent settlement and reduced FX drag compared to Store rails and generic MoRs.</p>
       </div>
 
+      <!-- Legal & Ops -->
       <div class="card">
         <div class="card-icon">
+          <!-- briefcase -->
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M3 3h18v14H3z"/><path d="M3 10h18"/>
+            <rect x="3" y="7" width="18" height="13" rx="2"/>
+            <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
           </svg>
         </div>
-        <div class="card-value">Fully transparent</div>
-        <div class="card-label">One fee</div>
-        <p class="card-description">One price covers everything — letting you plan and make financial decisions with confidence.</p>
+        <div class="card-value">Reporting</div>
+        <div class="card-label">Off your plate with clear records</div>
+        <p class="card-description">Operational workflows aligned to your business model. Transparent and optimised fees, clean reconciliation reports.</p>
+      </div>
+
+      <!-- Audit & Analytics -->
+      <div class="card">
+        <div class="card-icon">
+          <!-- chart -->
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 3v18h18"/>
+            <path d="M7 15l4-4 3 3 4-5"/>
+          </svg>
+        </div>
+        <div class="card-value">One API </div>
+        <div class="card-label">Quick and clean set up</div>
+        <p class="card-description">Fast and clean set up - integrate with our developer friendly APIs to go live.</p>
       </div>
     </div>
 
     <div style="text-align:center;margin-top:100px;">
-      <button class="btn btn-cta-large" onclick="openModal()">See Outpost Access in action →</button>
+      <button class="btn btn-cta-large" onclick="openModal()">See Outpost One in action →</button>
     </div>
   </div>
 </section>
 
-  <!-- VALUE HERO -->
+  
+  <!-- SOLUTION -->
   <section class="section" id="solution">
     <div class="container">
       <div class="value-hero">
         <div class="value-hero-content">
-          <span>Effective savings with Outpost Access: </span>
-          <span class="value-highlight" id="total-value"><span id="value-pct">+24%</span> vs. competitors</span>
+          <span>Total value unlocked by Outpost</span>
+          <span class="value-highlight" id="total-value">+$2.3M to your bank account</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CALCULATOR (ACCESS) -->
+  <!-- CALCULATOR (GLOBAL) -->
   <section class="section" id="calculator">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Access calculator</h2>
+        <h2 class="section-title">The impact Outpost can have for your app business globally</h2>
       </div>
 
-      <div class="calculator-container" id="calc-access">
+      <div class="calculator-container" id="calc-global">
         <div class="left-panel">
           <div class="calculator-inputs">
             <h3 class="inputs-title">Impact calculator</h3>
@@ -475,61 +697,31 @@ td{padding:22px 28px;color:var(--fg);font-size:16px;line-height:1.5;}
                 <span class="range-value" id="gmv_val">$7,200,000</span>
               </div>
             </div>
-
-            <div class="input-group">
-              <label class="input-label">Average transaction value ($)</label>
-              <div class="input-wrapper">
-                <input type="number" id="atv_num" min="1" step="1" value="20" oninput="handleNumber('atv', this)"/>
-              </div>
-            </div>
-
-            <div class="input-group">
-              <label class="input-label">Number of markets</label>
-              <div class="input-wrapper">
-                <input type="number" id="markets_num" min="1" step="1" value="5" oninput="handleNumber('markets', this)"/>
-              </div>
-            </div>
           </div>
         </div>
 
         <div>
           <div class="calculator-results">
-            <h3>Your costs vs. Outpost</h3>
-            <p class="calculator-subtitle">All figures shown as totals (we only display outcomes — not the math).</p>
+            <h3>App / Play Store vs. Outpost</h3>
+            <p class="calculator-subtitle">as a % of GMV</p>
 
-            <div class="result-item">
-              <span class="result-label">Calculation engine (2.7% × GMV)</span>
-              <span class="result-value" id="calc_engine">$0</span>
-            </div>
-            <div class="result-item">
-              <span class="result-label">Filing costs (1.8% × GMV)</span>
-              <span class="result-value" id="filing_costs">$0</span>
-            </div>
-            <div class="result-item">
-              <span class="result-label"><strong>Competitor cost</strong> (calc engine + filing)</span>
-              <span class="result-value" id="competitor_cost">$0</span>
-            </div>
-
-            <div class="result-item">
-              <span class="result-label">Liability coverage (0.3% × GMV)</span>
-              <span class="result-value" id="liability_cov">$0</span>
-            </div>
-
-            <div class="result-item">
-              <span class="result-label"><strong>Total cost without Outpost</strong></span>
-              <span class="result-value" id="total_without">$0</span>
+            <div class="highlight-box-red">
+              <div class="result-item">
+                <span class="result-label"><strong>Total with App / Play Store</strong></span>
+                <span class="result-value negative" id="total_app">-32.0% = -$2.3M</span>
+              </div>
             </div>
 
             <div class="highlight-box-green">
               <div class="result-item">
-                <span class="result-label"><strong>Outpost savings</strong> (vs. 2% × GMV)</span>
-                <span class="result-value" id="outpost_savings">+0</span>
+                <span class="result-label"><strong>Net impact with Outpost</strong></span>
+                <span class="result-value positive" id="net">+23.5% = +$1.7M</span>
               </div>
             </div>
 
             <div class="calc-cta-bottom">
-              <button class="btn btn-cta-large" onclick="openModal()">See Outpost Access in action →</button>
-              <div class="calc-note">*Outpost fee assumed at 2% of GMV.</div>
+              <button class="btn btn-cta-large" onclick="openModal()">See Outpost One in action →</button>
+              <div class="calc-note">*Net value is inclusive of Outpost's flat fee.</div>
             </div>
 
           </div>
@@ -539,20 +731,22 @@ td{padding:22px 28px;color:var(--fg);font-size:16px;line-height:1.5;}
     </div>
   </section>
 
-    <!-- How we calculate -->
+    <!-- How we calculate (drop anywhere below the calculator) -->
     <div class="calculator-explanation">
-      <h3 class="explanation-title">How we calculate</h3>
+      <h3 class="explanation-title">How we calculate your savings</h3>
       <div class="explanation-grid">
         <div class="explanation-item">
-          <h4>Competitor stack</h4>
+          <h4>App / Play Store</h4>
           <p>
-            We model a typical competitor as two core components: a calculation engine at 2.7% of GMV and filing costs at 1.8% of GMV. Competitor cost is the sum of those two, and we then add 0.3% of GMV for liability coverage.
+            The App / Play Store charge a 32% total fee to act as a Merchant of Record (MoR).
+            This includes the 30% commission plus additional costs for refunds and chargebacks.
           </p>
         </div>
+    
         <div class="explanation-item">
-          <h4>Outpost pricing</h4>
+          <h4>Outpost fee</h4>
           <p>
-            Outpost Access is modeled at a flat 2% of GMV. Your <em>Outpost savings</em> is: (Total cost without Outpost) − (2% × GMV). We surface only the outcomes.
+            Outpost is a flat percentage of GMV. We do not cover refunds / chargeback fees - but negotiate the lowest on the market for you. We compare that to the Store total to show net value unlocked. 
           </p>
         </div>
       </div>
@@ -563,7 +757,8 @@ td{padding:22px 28px;color:var(--fg);font-size:16px;line-height:1.5;}
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">
-          Compare the landscape
+          We are the only enterprise-grade MoR, delivering the above with your
+          <span class="solid-green-text">dedicated Outpost entity</span>
         </h2>
       </div>
 
@@ -571,36 +766,46 @@ td{padding:22px 28px;color:var(--fg);font-size:16px;line-height:1.5;}
         <table>
           <thead>
             <tr>
-              <th>Solution</th>
-              <th>Liability Coverage</th>
-              <th>PSP Compatibility</th>
-              <th>Developer Experience</th>
+              <th>Feature</th>
+              <th style="background:rgba(16,185,129,.03);">
+                <div>
+                  <span>Outpost One</span>
+                  <div style="font-size:12px;color:var(--text-2);font-weight:400;margin-top:4px;">Dedicated Entity Model</div>
+                </div>
+              </th>
+              <th style="background:rgba(239,68,68,.03);">
+                <div>
+                  <span>Traditional MoRs</span>
+                  <div style="font-size:12px;color:var(--text-2);font-weight:400;margin-top:4px;">Shared Entity Model</div>
+                </div>
+              </th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>Stripe Tax</strong></td>
-              <td><span class="cross">✗</span> None</td>
-              <td>Stripe only</td>
-              <td>Good (if using Stripe)</td>
+              <td><strong>Legal Entity</strong></td>
+              <td style="background:rgba(16,185,129,.03);"><span class="tick">✓</span> Dedicated exclusively to your platform</td>
+              <td style="background:rgba(239,68,68,.03);"><span class="cross">✗</span> Shared across multiple merchants</td>
             </tr>
             <tr>
-              <td><strong>Avalara</strong></td>
-              <td><span class="cross">✗</span> None</td>
-              <td>Various (complex)</td>
-              <td>Poor (enterprise sales)</td>
+              <td><strong>Risk Exposure</strong></td>
+              <td style="background:rgba(16,185,129,.03);"><span class="tick">✓</span> Fully isolated, no cross-contamination</td>
+              <td style="background:rgba(239,68,68,.03);"><span class="cross">✗</span> Shared risk pool</td>
             </tr>
             <tr>
-              <td><strong>Lemon Squeezy</strong></td>
-              <td><span class="tick">✓</span> Yes</td>
-              <td><span class="cross">✗</span> Replaces PSP</td>
-              <td>N/A (takes payments)</td>
+              <td><strong>MCC Configuration</strong></td>
+              <td style="background:rgba(16,185,129,.03);"><span class="tick">✓</span> Optimized for gaming platforms</td>
+              <td style="background:rgba(239,68,68,.03);"><span class="cross">✗</span> Often fixed or limited</td>
             </tr>
             <tr>
-              <td><strong>Outpost Access</strong></td>
-              <td><span class="tick">✓</span> Full coverage</td>
-              <td><span class="tick">✓</span> Any PSP</td>
-              <td><span class="tick">✓</span> SDK-like API</td>
+              <td><strong>PSP Relationships</strong></td>
+              <td style="background:rgba(16,185,129,.03);"><span class="tick">✓</span> Platform-specific terms and routing</td>
+              <td style="background:rgba(239,68,68,.03);"><span class="cross">✗</span> Pooled or constrained</td>
+            </tr>
+            <tr>
+              <td><strong>Audit Trail</strong></td>
+              <td style="background:rgba(16,185,129,.03);"><span class="tick">✓</span> Clean, transparent records</td>
+              <td style="background:rgba(239,68,68,.03);"><span class="cross">✗</span> Co-mingled activity</td>
             </tr>
           </tbody>
         </table>
@@ -611,7 +816,7 @@ td{padding:22px 28px;color:var(--fg);font-size:16px;line-height:1.5;}
   <!-- FINAL CTA -->
   <section class="section" style="text-align:center;">
     <div class="container">
-      <h2 class="section-title"><span class="bottom-dynamic-pct">24%</span> back vs. competitors. That’s what we call effortless.</h2>
+      <h2 class="section-title">Unlocking $<span class="bottom-dynamic">2.3M</span> from your current GMV? That's what we call effortless! </h2>
       <button class="btn btn-cta-large" style="margin-top:32px;" onclick="openModal()">Book demo →</button>
     </div>
   </section>
@@ -633,28 +838,30 @@ td{padding:22px 28px;color:var(--fg);font-size:16px;line-height:1.5;}
 
   <script>
   /* =========================================================
-     EDIT ME #1 — QUICK CONFIG
+     EDIT ME #1 — QUICK CONFIG (Company + starting GMV)
+     - company: string shown in copy + nav brand
+     - gmvStart: starting GMV (number, USD)
    ========================================================= */
   const CONFIG = {
-    company: "Outpost",
-    gmvStart: 7200000, // starting GMV
-    fees: {
-      calcEngine: 0.027,     // 2.7% of GMV
-      filing: 0.018,         // 1.8% of GMV
-      liability: 0.003,      // 0.3% of GMV
-      outpost: 0.02          // 2.0% of GMV
-    }
+    company: "Reface",
+    gmvStart: 7200000,           // starting GMV for the global calculator
+    fees: { app: 0.32, outpost: 0.085 }, // % of GMV (decimals) - updated to 32%
   };
 
   /* =========================================================
      EDIT ME #2 — (Optional) slider ranges
+     Change only if you need a different range/step.
    ========================================================= */
-  const SLIDERS = { gmvMin: 1_000_000, gmvMax: 50_000_000, gmvStep: 50_000 };
+  const SLIDERS = {
+    gmvMin: 1000_000, gmvMax: 25_000_000, gmvStep: 50_000
+  };
 
-  // ---- Derived state
-  const Calc = { gmv: CONFIG.gmvStart, atv: 20, markets: 5 };
+  // ---- Derived state (no need to edit below) ----------------
+  const Calc = { gmv: CONFIG.gmvStart };
+  const APP_FEE = CONFIG.fees.app;
+  const OUTPOST_FEE = CONFIG.fees.outpost;
 
-  // ---- Formatters
+  // ---- Formatters ------------------------------------------
   const currency0 = n => new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",maximumFractionDigits:0}).format(n);
   function fmtShort(v){
     const s=v<0?"-":""; const n=Math.abs(v);
@@ -662,48 +869,59 @@ td{padding:22px 28px;color:var(--fg);font-size:16px;line-height:1.5;}
     if(n>=1e3) return s+"$"+(n/1e3).toFixed(1).replace(/\.0$/,"")+"K";
     return s+currency0(n).replace("$","");
   }
-  const fmtPctWhole = p => Math.round(p*100)+"%";
-
-  // ---- Dom helpers
-  function setTxt(id,val){ const el=document.getElementById(id); if(el) el.textContent=val; }
-  function setHtml(id,val){ const el=document.getElementById(id); if(el) el.innerHTML=val; }
-  function qsa(sel){ return Array.from(document.querySelectorAll(sel)); }
-
-  // ---- Core compute
-  function compute(){
-    const { calcEngine, filing, liability, outpost } = CONFIG.fees;
-    const gmv = Calc.gmv;
-
-    const calcEngineCost = calcEngine * gmv;
-    const filingCost = filing * gmv;
-    const competitorCost = calcEngineCost + filingCost;
-
-    const liabilityCost = liability * gmv;
-    const totalWithoutOutpost = competitorCost + liabilityCost;
-
-    const outpostFee = outpost * gmv;
-    const outpostSavings = totalWithoutOutpost - outpostFee; // positive if Outpost cheaper
-    const savingsPct = outpostSavings / gmv;
-
-    // Write numbers
-    setTxt("calc_engine", fmtShort(calcEngineCost));
-    setTxt("filing_costs", fmtShort(filingCost));
-    setTxt("competitor_cost", fmtShort(competitorCost));
-    setTxt("liability_cov", fmtShort(liabilityCost));
-    setTxt("total_without", fmtShort(totalWithoutOutpost));
-    setTxt("outpost_savings", (outpostSavings>=0?"+":"-")+fmtShort(Math.abs(outpostSavings)));
-
-    // Globals that show % savings (Get paid X%)
-    const pctText = fmtPctWhole(Math.max(0, savingsPct));
-    setTxt("hero-pct", pctText);
-    setTxt("value-pct", "+"+pctText);
-    qsa(".nav-dynamic-pct,.bottom-dynamic-pct").forEach(el=> el.textContent = pctText);
-
-    // Update nav CTA text
-    setHtml("nav-cta", `Get paid <span class="nav-dynamic-pct">${pctText}</span>`);
+  const fmtPct = p => (p*100).toFixed(1)+"%";
+  function pctEqMoney(p, money){
+    const sp=p>=0?"+":"-"; const sm=money>=0?"+":"-";
+    return `${sp}${fmtPct(Math.abs(p))} = ${sm}${fmtShort(Math.abs(money)).replace("+","")}`;
   }
 
-  // ---- Handlers
+  // ---- Dom helpers -----------------------------------------
+  function setTxt(id,val){ const el=document.getElementById(id); if(el) el.textContent=val; }
+  function setHtml(id,val){ const el=document.getElementById(id); if(el) el.innerHTML=val; }
+  function setText(id, text, cls){
+    const el=document.getElementById(id); if(!el) return;
+    el.textContent=text;
+    el.classList.toggle("positive", cls==="pos");
+    el.classList.toggle("negative", cls==="neg");
+  }
+
+  // ---- Global UI updater (hero, nav, problem, bottom) -------
+  function updateGlobals(netAmt, netPct){
+    const short = fmtShort(netAmt).replace("-","");
+    const compact = short.replace("$",""); // e.g. 1.4M
+
+    // places that show just the number
+    document.querySelectorAll(".problem-dynamic,.bottom-dynamic,.nav-dynamic")
+      .forEach(el => el.textContent = compact);
+
+    // hero and value hero
+    setTxt("hero-value", compact);
+    setTxt("total-value", `+${fmtShort(Math.max(0, netAmt))} to your bank account`);
+
+    // percentage + nav cta
+    setTxt("hero-pct", Math.round(netPct*100)+"%");
+    setHtml("nav-cta", `Unlock ${short} with Outpost`);
+  }
+
+  // ---- Core compute -----------------------------------------
+  function compute(){
+    const gmv = Calc.gmv;
+
+    const appFee   = APP_FEE * gmv;
+    const outpost  = OUTPOST_FEE * gmv;
+    const net      = appFee - outpost;
+
+    setText("total_app",     pctEqMoney(-APP_FEE, -appFee), "neg");
+    setText("net",           pctEqMoney((APP_FEE-OUTPOST_FEE), net), "pos");
+
+    setTxt("cta", `UNLOCK ${fmtShort(net)} — BOOK A DEMO`);
+
+    updateGlobals(net, net/gmv);
+     // NEW: update the $10M display
+    setTxt("gmv_display", fmtShort(gmv));
+  }
+
+  // ---- Slider handlers --------------------------------------
   function handleSlider(field, el){
     const val = parseFloat(el.value);
     if(field==="gmv"){
@@ -712,37 +930,30 @@ td{padding:22px 28px;color:var(--fg);font-size:16px;line-height:1.5;}
     }
     compute();
   }
-  function handleNumber(field, el){
-    const val = parseFloat(el.value||"0");
-    if(field==="atv") Calc.atv = Math.max(0,val);
-    if(field==="markets") Calc.markets = Math.max(1, Math.floor(val));
-    compute(); // currently informative inputs; core outputs are % of GMV per spec
-  }
 
-  // ---- External action
+  // ---- External action (Calendly) ---------------------------
   function openModal(){ window.open("https://calendly.com/will-outpostnow/30min","_blank"); }
 
-  // ---- Init
+  // ---- Init -------------------------------------------------
   window.addEventListener("load", ()=>{
-    // Company
+    // 1) Company name in all spots
     document.querySelectorAll(".company").forEach(el => el.textContent = CONFIG.company);
 
-    // Navbar shrink
+    // 2) Navbar shrink on scroll
     document.addEventListener("scroll", ()=>{
       const n=document.getElementById("navbar");
       if(window.scrollY>50) n.classList.add("scrolled"); else n.classList.remove("scrolled");
     });
 
-    // Slider config
+    // 3) Configure slider from SLIDERS (so you never hunt in HTML)
     const g = document.getElementById("gmv_num");
     g.min=SLIDERS.gmvMin; g.max=SLIDERS.gmvMax; g.step=SLIDERS.gmvStep; g.value=Calc.gmv;
     g.oninput = e => handleSlider("gmv", e.target);
     setTxt("gmv_val", currency0(Calc.gmv));
 
-    // Initial compute
+    // 4) Initial compute
     compute();
   });
   </script>
 </body>
 </html>
-
